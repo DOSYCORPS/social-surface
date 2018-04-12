@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "name": "Social Surface",
+  "short_name": "SoSu",
+  "description": "Scan and Fix all public information you are exposing to people through your Facebook account.",
+  "author": "The Dosyago Corporation",
+  "content_scripts": [
+    {
+      "matches": ["https://*.facebook.com/*","https://*.fbcdn.com/*],
+      "js": ["helper.js"],
+      "all_frames": true
+    }
+  ],
+  "browser_action": {
+    "default_title": "Social Surface Settings",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage"
+  ]
+}
