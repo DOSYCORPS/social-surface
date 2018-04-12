@@ -10,7 +10,16 @@
   const newTab = promisify((...args) => chrome.tabs.create(...args));
   const exe = promisify((...args) => chrome.tabs.executeScript(...args));
 
+  chrome.runtime.onMessage.addListener( (msg, sender, reply) => {
+    console.log(msg, sender, reply);
+  });
+  
   Object.assign(self, summaryIntel);
+
+  /**
+    const storyStamps = Array.from(document.querySelectorAll('.timestampContent'));
+    const photoLinks = Array.from(document.querySelectorAll('a[rel="theater"]'));
+  **/
 
   async function countPublicPhotosTagged(id) {
     const tab = await newTab({
@@ -18,30 +27,28 @@
       index: 1000,
       url: `https://www.facebook.com/search/${id}/photos-tagged/intersect`
     });
-    const result = await exe(tab.id, {
+    exe(tab.id, {
       code: `
-        await new Promise((res,rej) => {
+        (function() {
           let count = 0;
+          let retries = 5;
           const int = setInterval(() => {
-            scrollTo(0,scrollY+1000);
-            const storyStamps = Array.from(document.querySelectorAll('.timestampContent'));
-            const photoLinks = Array.from(document.querySelectorAll('a[rel="theater"]'));
-            let newCount;
-            if ( !! storyStamps ) {
-              newCount = storyStamps;
-            } else if ( !! photoLinks ) {
-              newCount = photoLinks / 2;
-            }
+            scrollTo(0,scrollY+9999);
+            const photoLinks = Array.from(document.querySelectorAll('a[rel="theater"]')).length;
+            const newCount = photoLinks / 2;;
             if ( newCount == count ) {
-              console.log(count);
-              res(count);    
+              retries--;
+              if ( retries == 0 ) {
+                clearInterval(int);
+                chrome.runtime.sendMessage({count,type:'publicphotostagged'});
+              }
+            } else {
+              count = newCount;
             }
-          }, 1000);
-        });
+          }, 2000);
+        }());
       `
     });
-    console.log(result);     
-    return result;
   }
 
   async function countPublicPhotosLiked(id) {
