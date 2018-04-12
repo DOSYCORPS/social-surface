@@ -11,7 +11,7 @@
   const exe = promisify((...args) => chrome.tabs.executeScript(...args));
 
   chrome.runtime.onMessage.addListener( (msg, sender, reply) => {
-    console.log(msg, sender, reply);
+    console.log(msg);
   });
   
   Object.assign(self, summaryIntel);
@@ -40,10 +40,12 @@
               retries--;
               if ( retries == 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({count,type:'publicphotostagged'});
+                chrome.runtime.sendMessage({count,type:'publicphotostagged',done:true});
+                setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
+              chrome.runtime.sendMessage({count,type:'publicphotostagged',done:false});
             }
           }, 2000);
         }());
@@ -57,6 +59,30 @@
       index: 1000,
       url: `https://www.facebook.com/search/${id}/photos-liked/intersect`
     });
+    exe(tab.id, {
+      code: `
+        (function() {
+          let count = 0;
+          let retries = 5;
+          const int = setInterval(() => {
+            scrollTo(0,scrollY+9999);
+            const photoLinks = Array.from(document.querySelectorAll('a[rel="theater"]')).length;
+            const newCount = photoLinks / 2;;
+            if ( newCount == count ) {
+              retries--;
+              if ( retries == 0 ) {
+                clearInterval(int);
+                chrome.runtime.sendMessage({count,type:'publicphotosliked',done:true});
+                setTimeout( () => self.close(), 0 );
+              }
+            } else {
+              count = newCount;
+              chrome.runtime.sendMessage({count,type:'publicphotosliked',done:false});
+            }
+          }, 2000);
+        }());
+      `
+    });
   }
 
   async function countPublicStoriesTagged(id) {
@@ -65,6 +91,29 @@
       index: 1000,
       url: `https://www.facebook.com/search/${id}/stories-tagged/intersect`
     });
+    exe(tab.id, {
+      code: `
+        (function() {
+          let count = 0;
+          let retries = 5;
+          const int = setInterval(() => {
+            scrollTo(0,scrollY+9999);
+            const newCount = Array.from(document.querySelectorAll('.timestampContent'));
+            if ( newCount == count ) {
+              retries--;
+              if ( retries == 0 ) {
+                clearInterval(int);
+                chrome.runtime.sendMessage({count,type:'publicstoriestagged',done:true});
+                setTimeout( () => self.close(), 0 );
+              }
+            } else {
+              count = newCount;
+              chrome.runtime.sendMessage({count,type:'publicstoriestagged',done:false});
+            }
+          }, 2000);
+        }());
+      `
+    });
   }
 
   async function countPublicStoriesLiked(id) {
@@ -72,6 +121,29 @@
       active: false,
       index: 1000,
       url: `https://www.facebook.com/search/${id}/stories-liked/intersect`
+    });
+    exe(tab.id, {
+      code: `
+        (function() {
+          let count = 0;
+          let retries = 5;
+          const int = setInterval(() => {
+            scrollTo(0,scrollY+9999);
+            const newCount = Array.from(document.querySelectorAll('.timestampContent'));
+            if ( newCount == count ) {
+              retries--;
+              if ( retries == 0 ) {
+                clearInterval(int);
+                chrome.runtime.sendMessage({count,type:'publicstoriesliked',done:true});
+                setTimeout( () => self.close(), 0 );
+              }
+            } else {
+              count = newCount;
+              chrome.runtime.sendMessage({count,type:'publicstoriesliked',done:false});
+            }
+          }, 2000);
+        }());
+      `
     });
   }
 }
