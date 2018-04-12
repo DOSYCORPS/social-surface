@@ -7,7 +7,7 @@
   "author": "The Dosyago Corporation",
   "content_scripts": [
     {
-      "matches": ["https://www.facebook.com"],
+      "matches": ["https://www.facebook.com/"],
       "js": ["promisify.js", "getId.js"],
       "all_frames": true
     }
@@ -21,6 +21,7 @@
     "persistent": false
   },
   "permissions": [
+    "https://www.facebook.com/*",
     "tabs",
     "storage"
   ]
