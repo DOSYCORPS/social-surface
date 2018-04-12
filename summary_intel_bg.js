@@ -35,10 +35,10 @@
           const int = setInterval(() => {
             scrollTo(0,scrollY+9999);
             const photoLinks = Array.from(document.querySelectorAll('a[rel="theater"]')).length;
-            const newCount = photoLinks / 2;;
+            const newCount = photoLinks / 2;
             if ( newCount == count ) {
               retries--;
-              if ( retries == 0 ) {
+              if ( retries <= 0 ) {
                 clearInterval(int);
                 chrome.runtime.sendMessage({count,type:'publicphotostagged',done:true});
                 setTimeout( () => self.close(), 0 );
@@ -98,7 +98,7 @@
           let retries = 5;
           const int = setInterval(() => {
             scrollTo(0,scrollY+9999);
-            const newCount = Array.from(document.querySelectorAll('.timestampContent'));
+            const newCount = Array.from(document.querySelectorAll('.timestampContent')).length;
             if ( newCount == count ) {
               retries--;
               if ( retries == 0 ) {
@@ -129,7 +129,7 @@
           let retries = 5;
           const int = setInterval(() => {
             scrollTo(0,scrollY+9999);
-            const newCount = Array.from(document.querySelectorAll('.timestampContent'));
+            const newCount = Array.from(document.querySelectorAll('.timestampContent')).length;
             if ( newCount == count ) {
               retries--;
               if ( retries == 0 ) {
