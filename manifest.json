@@ -18,7 +18,8 @@
   },
   "background": {
     "scripts": ["promisify.js", "summary_intel_bg.js"],
-    "persistent": false
+    "persistent": false,
+    "page": "background.html"
   },
   "permissions": [
     "https://www.facebook.com/*",

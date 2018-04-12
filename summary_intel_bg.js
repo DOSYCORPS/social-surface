@@ -10,6 +10,8 @@
   const newTab = promisify((...args) => chrome.tabs.create(...args));
   const exe = promisify((...args) => chrome.tabs.executeScript(...args));
 
+  chrome.tabs.create({active:true,url: chrome.extension.getURL('background.html')});
+
   chrome.runtime.onMessage.addListener( (msg, sender, reply) => {
     console.log(msg);
   });
