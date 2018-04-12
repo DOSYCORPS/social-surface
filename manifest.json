@@ -7,8 +7,8 @@
   "author": "The Dosyago Corporation",
   "content_scripts": [
     {
-      "matches": ["https://*.facebook.com/*","https://*.fbcdn.com/*],
-      "js": ["helper.js"],
+      "matches": ["https://www.facebook.com"],
+      "js": ["getId.js"],
       "all_frames": true
     }
   ],
@@ -16,7 +16,12 @@
     "default_title": "Social Surface Settings",
     "default_popup": "popup.html"
   },
+  "background": {
+    "scripts": ["summary_intel_bg.js"],
+    "persistent": false
+  },
   "permissions": [
+    "tabs",
     "storage"
   ]
 }
