@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.facebook.com"],
-      "js": ["getId.js"],
+      "js": ["promisify.js", "getId.js"],
       "all_frames": true
     }
   ],
@@ -17,7 +17,7 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "scripts": ["summary_intel_bg.js"],
+    "scripts": ["promisify.js", "summary_intel_bg.js"],
     "persistent": false
   },
   "permissions": [
