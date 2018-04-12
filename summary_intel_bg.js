@@ -40,12 +40,12 @@
               retries--;
               if ( retries <= 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({count,type:'publicphotostagged',done:true});
+                chrome.runtime.sendMessage({id,count,type:'publicphotostagged',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({count,type:'publicphotostagged',done:false});
+              chrome.runtime.sendMessage({id,count,type:'publicphotostagged',done:false});
             }
           }, 2000);
         }());
@@ -72,12 +72,12 @@
               retries--;
               if ( retries == 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({count,type:'publicphotosliked',done:true});
+                chrome.runtime.sendMessage({id,count,type:'publicphotosliked',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({count,type:'publicphotosliked',done:false});
+              chrome.runtime.sendMessage({id,count,type:'publicphotosliked',done:false});
             }
           }, 2000);
         }());
@@ -103,12 +103,12 @@
               retries--;
               if ( retries == 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({count,type:'publicstoriestagged',done:true});
+                chrome.runtime.sendMessage({id,count,type:'publicstoriestagged',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({count,type:'publicstoriestagged',done:false});
+              chrome.runtime.sendMessage({id,count,type:'publicstoriestagged',done:false});
             }
           }, 2000);
         }());
@@ -134,12 +134,12 @@
               retries--;
               if ( retries == 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({count,type:'publicstoriesliked',done:true});
+                chrome.runtime.sendMessage({id,count,type:'publicstoriesliked',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({count,type:'publicstoriesliked',done:false});
+              chrome.runtime.sendMessage({id,count,type:'publicstoriesliked',done:false});
             }
           }, 2000);
         }());
