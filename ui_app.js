@@ -10,7 +10,7 @@
     const target = e.target;
     if ( target.matches('button.run') ) {
       document.querySelector('.scanning').classList.add('show');
-      chrome.tabs.create({url:'https://www.facebook.com/',active:true});
+      chrome.tabs.create({url:'https://www.facebook.com/',active:false});
     } else if ( target.matches('button.fix') ) {
       alert(target.closest('.report').dataset.advice);
     }
