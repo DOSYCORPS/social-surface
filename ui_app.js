@@ -4,8 +4,8 @@
   table.addEventListener('click', e => {
     const target = e.target;
     if ( target.matches('button.run') ) {
-      chrome.tabs.create({url:'https://www.facebook.com/',active:true});
       document.querySelector('.scanning').classList.add('show');
+      chrome.tabs.create({url:'https://www.facebook.com/',active:true});
     } else if ( target.matches('button.fix') ) {
       alert("Fix advice.");
     }
