@@ -3,7 +3,7 @@
   const table = document.querySelector('table');
   table.addEventListener('onclick', e => {
     const target = e.target;
-    if ( target.matches('button.run') {
+    if ( target.matches('button.run') ) {
       chrome.tabs.create({url:'https://www.facebook.com/',active:true});
     } else if ( target.matches('button.fix') ) {
       alert("Fix advice.");
