@@ -12,7 +12,7 @@
   });
 
   let id;
-  let scansRunning = 0;
+  let scansRunning = 4;
 
   chrome.runtime.onMessage.addListener( (msg, sender, reply) => {
     if ( msg.type == 'idFound' ) {
