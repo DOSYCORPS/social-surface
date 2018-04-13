@@ -4,7 +4,7 @@
 
 *Note: this item may still be being published. You can download and install it as an "Unpacked Extension" from this repository.*
 
-Review public items exposed on your social surface with a Security Assessment tool. 
+Review public items exposed on your social surface with a **very simple and basic** Security Assessment tool. 
 
 ## Screenshot
 
