@@ -7,7 +7,7 @@
     countPublicStoriesLiked
   };
 
-  const newTab = promisify((...args) => chrome.tabs.create(...args));
+  const newTab = promisify((...args) => chrome.windows.create(...args));
   const exe = promisify((...args) => chrome.tabs.executeScript(...args));
 
   Object.assign(self, summaryIntel);
@@ -18,11 +18,11 @@
   **/
 
   async function countPublicPhotosTagged(id) {
-    const tab = await newTab({
-      active: false,
-      index: 1000,
+    const win = await newTab({
+      focused: false,
       url: `https://www.facebook.com/search/${id}/photos-tagged/intersect`
     });
+    const tab = win.tabs[0];
     exe(tab.id, {
       code: `
         (function() {
@@ -50,11 +50,12 @@
   }
 
   async function countPublicPhotosLiked(id) {
-    const tab = await newTab({
+    const win = await newTab({
       active: false,
       index: 1000,
       url: `https://www.facebook.com/search/${id}/photos-liked/intersect`
     });
+    const tab = win.tabs[0];
     exe(tab.id, {
       code: `
         (function() {
@@ -82,11 +83,12 @@
   }
 
   async function countPublicStoriesTagged(id) {
-    const tab = await newTab({
+    const win = await newTab({
       active: false,
       index: 1000,
       url: `https://www.facebook.com/search/${id}/stories-tagged/intersect`
     });
+    const tab = win.tabs[0];
     exe(tab.id, {
       code: `
         (function() {
@@ -113,11 +115,12 @@
   }
 
   async function countPublicStoriesLiked(id) {
-    const tab = await newTab({
+    const win = await newTab({
       active: false,
       index: 1000,
       url: `https://www.facebook.com/search/${id}/stories-liked/intersect`
     });
+    const tab = win.tabs[0];
     exe(tab.id, {
       code: `
         (function() {
