@@ -3,7 +3,8 @@
   const table = document.querySelector('table');
 
   const myId = promisify((cb) => chrome.windows.getCurrent(cb));
-  const focusMe = promisify((id, cb) => chrome.windows.update(id, {focused:true}, cb));
+  const focusMe = promisify((wid, cb) => chrome.windows.update(wid, {focused:true}, cb));
+  Object.assign(self, {focusMe,myId});
 
   table.addEventListener('click', e => {
     const target = e.target;
