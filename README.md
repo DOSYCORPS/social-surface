@@ -2,7 +2,7 @@
 
 [On the Chrome Web Store](https://chrome.google.com/webstore/detail/ddppdlkajpgigjdadijekacliockbchd)
 
-*Note: this item may still be being published. You can download and install it as an unpacked extension from this repository.*
+*Note: this item may still be being published. You can download and install it as an "Unpacked Extension" from this repository.*
 
 Review public items exposed on your social surface with a Security Assessment tool. 
 
