@@ -36,12 +36,12 @@
               retries--;
               if ( retries <= 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({id,count,type:'countUpdate',countType:'publicPhotosTagged',done:true});
+                chrome.runtime.sendMessage({id:${id},count,type:'countUpdate',countType:'publicPhotosTagged',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({id,count,type:'countUpdate',countType:'publicPhotosTagged',done:false});
+              chrome.runtime.sendMessage({id:${id},count,type:'countUpdate',countType:'publicPhotosTagged',done:false});
             }
           }, 2000);
         }());
@@ -68,12 +68,12 @@
               retries--;
               if ( retries == 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({id,count,countType:'publicPhotosLiked',type:'countUpdate',done:true});
+                chrome.runtime.sendMessage({id:${id},count,countType:'publicPhotosLiked',type:'countUpdate',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({id,count,countType:'publicPhotosLiked',type:'countUpdate',done:false});
+              chrome.runtime.sendMessage({id:${id},count,countType:'publicPhotosLiked',type:'countUpdate',done:false});
             }
           }, 2000);
         }());
@@ -99,12 +99,12 @@
               retries--;
               if ( retries == 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({id,count,countType:'publicStoriesTagged',type:'countUpdate',done:true});
+                chrome.runtime.sendMessage({id:${id},count,countType:'publicStoriesTagged',type:'countUpdate',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({id,count,countType:'publicStoriesTagged',type:'countUpdate',done:false});
+              chrome.runtime.sendMessage({id:${id},count,countType:'publicStoriesTagged',type:'countUpdate',done:false});
             }
           }, 2000);
         }());
@@ -130,12 +130,12 @@
               retries--;
               if ( retries == 0 ) {
                 clearInterval(int);
-                chrome.runtime.sendMessage({id,count,countType:'publicStoriesLiked',type:'countUpdate',done:true});
+                chrome.runtime.sendMessage({id:${id},count,countType:'publicStoriesLiked',type:'countUpdate',done:true});
                 setTimeout( () => self.close(), 0 );
               }
             } else {
               count = newCount;
-              chrome.runtime.sendMessage({id,count,countType:'publicStoriesLiked',type:'countUpdate',done:false});
+              chrome.runtime.sendMessage({id:${id},count,countType:'publicStoriesLiked',type:'countUpdate',done:false});
             }
           }, 2000);
         }());
