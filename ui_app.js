@@ -18,7 +18,7 @@
   let id;
   let scansRunning = 4;
 
-  chrome.runtime.onMessage.addListener( (msg, sender, reply) => {
+  chrome.runtime.onMessage.addListener( async (msg, sender, reply) => {
     if ( msg.type == 'idFound' ) {
       id = msg.id; 
       scansRunning = 4;
