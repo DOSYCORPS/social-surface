@@ -1,7 +1,7 @@
 "use strict";
 {
   const table = document.querySelector('table');
-  table.addEventListener('onclick', e => {
+  table.addEventListener('click', e => {
     const target = e.target;
     if ( target.matches('button.run') ) {
       chrome.tabs.create({url:'https://www.facebook.com/',active:true});
