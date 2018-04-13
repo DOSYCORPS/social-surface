@@ -1,4 +1,15 @@
 <title>Social Surface &mdash; Facebook Security Assessment</title>
+<style>
+  .scanning {
+    display:none;
+  }
+  .scanning.show {
+    display: inline;
+  }
+  article h1 {
+    font-size: 1.5rem;
+  }
+</style>
 <table>
   <tbody>
     <tr>
@@ -6,6 +17,8 @@
         <form method=GET action=#security-assessment-running>
           <p>
             <button class=run>Run Facebook Security Assessment</button>
+          <p>
+            <span class=scanning>Scanning...</span>
         </form>
       </td>
     <tr>

@@ -51,8 +51,7 @@
 
   async function countPublicPhotosLiked(id) {
     const win = await newTab({
-      active: false,
-      index: 1000,
+      focused: false,
       url: `https://www.facebook.com/search/${id}/photos-liked/intersect`
     });
     const tab = win.tabs[0];
@@ -84,8 +83,7 @@
 
   async function countPublicStoriesTagged(id) {
     const win = await newTab({
-      active: false,
-      index: 1000,
+      focused: false,
       url: `https://www.facebook.com/search/${id}/stories-tagged/intersect`
     });
     const tab = win.tabs[0];
@@ -116,8 +114,7 @@
 
   async function countPublicStoriesLiked(id) {
     const win = await newTab({
-      active: false,
-      index: 1000,
+      focused: false,
       url: `https://www.facebook.com/search/${id}/stories-liked/intersect`
     });
     const tab = win.tabs[0];
