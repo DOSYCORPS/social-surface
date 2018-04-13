@@ -1,6 +1,10 @@
 "use strict";
 {
   const table = document.querySelector('table');
+
+  const myId = promisify(() => chrome.windows.getCurrent(cb));
+  const focusMe = promisify((id, cb) => chrome.windows.update(id, {focused:true}, cb));
+
   table.addEventListener('click', e => {
     const target = e.target;
     if ( target.matches('button.run') ) {
@@ -18,15 +22,15 @@
     if ( msg.type == 'idFound' ) {
       id = msg.id; 
       scansRunning = 4;
-      setTimeout( () => countPublicPhotosTagged(id), 100 );
-      setTimeout( () => countPublicPhotosLiked(id), 100 );
-      setTimeout( () => countPublicStoriesTagged(id), 100 );
-      setTimeout( () => countPublicStoriesLiked(id), 100 );
-      setTimeout( () => {
-        chrome.windows.getCurrent( ({windowId}) => {
-          chrome.windows.update( windowId, {focused:true});
-        });
-      }, 1000 );
+      const {windowId} = await myId();
+      await countPublicPhotosTagged(id);
+      await focusMe(windowId);
+      await countPublicPhotosLiked(id);
+      await focusMe(windowId);
+      await countPublicStoriesTagged(id);
+      await focusMe(windowId);
+      await countPublicStoriesLiked(id);
+      await focusMe(windowId);
     } else if ( msg.type == 'countUpdate' ) {
       const countEl = document.querySelector(`#${msg.countType} .count`);
       countEl.innerText = msg.count;
