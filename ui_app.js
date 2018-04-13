@@ -22,7 +22,7 @@
     if ( msg.type == 'idFound' ) {
       id = msg.id; 
       scansRunning = 4;
-      const {windowId} = await myId();
+      const {id:windowId} = await myId();
       await countPublicPhotosTagged(id);
       await focusMe(windowId);
       await countPublicPhotosLiked(id);
