@@ -21,22 +21,24 @@
   <tbody>
     <tr>
       <td colspan=2>
-        <form method=GET action=#security-assessment-running>
-          <p>
-            <button class=run>Run Facebook Security Assessment</button>
-          <p>
-            <span class=scanning>Scanning...</span>
-        </form>
+        <p>
+          <button class=run>Run Facebook Security Assessment</button>
+        <p>
+          <span class=scanning>Scanning...</span>
       </td>
     <tr>
       <td>
-        <article id=publicPhotosTagged class=report>
+        <article id=publicPhotosTagged class=report 
+            data-advice="Go through the photos and untag yourself" 
+          >
           <h1>Public photos tagged with you</h1>
           <span class=count>0</span>
           <button disabled class=fix>Fix</button>
         </article>
       <td>
-        <article id=publicStoriesTagged class=report>
+        <article id=publicStoriesTagged class=report
+            data-advice="Go through the stories and untag yourself" 
+          >
           <h1>Public stories tagged with you</h1>
           <span class=count>0</span>
           <button disabled class=fix>Fix</button>
@@ -44,13 +46,17 @@
     </tr>
     <tr>
       <td>
-        <article id=publicPhotosLiked class=report>
+        <article id=publicPhotosLiked class=report
+            data-advice="Go through the photos and unlike them"
+          >
           <h1>Public photos liked by you</h1>
           <span class=count>0</span>
           <button disabled class=fix>Fix</button>
         </article>
       <td>
-        <article id=publicStoriesLiked class=report>
+        <article id=publicStoriesLiked class=report
+            data-advice="Go through the stories and unlike them"
+          >
           <h1>Public stories liked by you</h1>
           <span class=count>0</span>
           <button disabled class=fix>Fix</button>

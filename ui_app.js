@@ -7,7 +7,7 @@
       document.querySelector('.scanning').classList.add('show');
       chrome.tabs.create({url:'https://www.facebook.com/',active:true});
     } else if ( target.matches('button.fix') ) {
-      alert("Fix advice.");
+      alert(target.closest('.report').dataset.advice);
     }
   });
 
@@ -22,6 +22,11 @@
       setTimeout( () => countPublicPhotosLiked(id), 100 );
       setTimeout( () => countPublicStoriesTagged(id), 100 );
       setTimeout( () => countPublicStoriesLiked(id), 100 );
+      setTimeout( () => {
+        chrome.windows.getCurrent( ({windowId}) => {
+          chrome.windows.update( windowId, {focused:true});
+        });
+      }, 1000 );
     } else if ( msg.type == 'countUpdate' ) {
       const countEl = document.querySelector(`#${msg.countType} .count`);
       countEl.innerText = msg.count;
