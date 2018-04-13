@@ -12,8 +12,7 @@ Review public items exposed on your social surface with a **very simple and basi
 
 ## Info
 
-**Scan and Fix all public information you are exposing to people through your Facebook account.
-Info**
+**Scan and Fix all public information you are exposing to people through your Facebook account**
 
 Review counts and details of public stories and photos you are tagged in or which you have liked on Facebook, to understand what items are exposed on your social surface. This basic beta-version extension includes very simple advice to fix these vulnerabilities, with future paid versions maybe including the ability to fix it automatically for you.
 
@@ -21,7 +20,7 @@ Review counts and details of public stories and photos you are tagged in or whic
 
 After you click "Run Facebook Security Assessment", we will open 4 windows in the background. We use these to scan public information about your profile to report to you the numbers of exposed items regarding you in your social surface.
 
-Our advice is simple and manual. It will require you to do it yourself. In future, paid versions of this extension may offer the ability to automatically fix your social surface exposure.
+Our advice to fix any unintentional exposure is simple and manual. It will require you to do it yourself. In future, paid versions of this extension may offer the ability to automatically fix your social surface exposure.
 
 The 4 windows are created in the background. You can review the photos and stores you are tagged in and have liked by viewing those windows.
 
