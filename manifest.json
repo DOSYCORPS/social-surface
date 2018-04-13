@@ -17,7 +17,8 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "page": "background.html"
+    "scripts": ["promisify.js", "run_bg.js"],
+    "persistent": false
   },
   "permissions": [
     "https://www.facebook.com/*",
