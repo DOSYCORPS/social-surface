@@ -27,3 +27,7 @@ The 4 windows are created in the background. You can review the photos and store
 ### More Info
 
 Determine if any information you would rather be private has become public by accident. Use this Security Assessment tool to reveal exposed items on your social surface. 
+
+### Disclaimer
+
+Don't use this for anything bad. We're not responsible for any harm arising from using this. 
